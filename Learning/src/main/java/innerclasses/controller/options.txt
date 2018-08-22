@@ -1,0 +1,2 @@
+WaterOff 300000
+AirCycleOn 4000
