@@ -6,7 +6,6 @@ class Blip1 implements Externalizable {
         System.out.println("Blip1 Constructor");
     }
 
-    @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         System.out.println("Blip1.writeExternal");
     }
