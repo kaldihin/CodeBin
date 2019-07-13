@@ -1,9 +1,9 @@
 package io;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 public class Alien implements Serializable {
 
@@ -81,22 +81,59 @@ public class Alien implements Serializable {
 
 
 
-        String relativePath = "tmp" + fileSeparator + "filik.txt";
-        file = new File(relativePath);
-        if (file.createNewFile()) {
-            System.out.println(relativePath + "File created as a relativePath");
-        } else {
-            System.out.println("RelativePath already exist the file");
-        }
+//        String relativePath = "tmp" + fileSeparator + "filik.txt";
+//        file = new File(relativePath);
+//        if (file.createNewFile()) {
+//            System.out.println(relativePath + "File created as a relativePath");
+//        } else {
+//            System.out.println("RelativePath already exist the file");
+//        }
 
         FileInputStream fileInputStream = new FileInputStream(file);
         while (fileInputStream.read() != -1) {
             System.out.println(fileInputStream.read());
         }
 
-        File filePath = Files.createFile("states.txt");
+        File myFile = new File("C:\\Users\\9ty5\\Desktop\\Practice\\LearningPractice\\src\\main\\java\\io\\myFile.txt");
 
-        BufferedReader bufferedReader =
+        File myFile2 = new File("C:\\Users\\9ty5\\Desktop\\Practice\\LearningPractice\\src\\main\\java\\io\\myFile2.txt");
+
+        if (myFile2.createNewFile()) {
+            System.out.println("File2 created");
+        }
+
+        if (myFile.createNewFile()) {
+            System.out.println("File created");
+        }
+
+        FileInputStream myFileInputStream = new FileInputStream(myFile);
+
+
+
+
+
+        FileWriter fileWriter1 = new FileWriter(myFile);
+        fileWriter1.write("The string");
+        fileWriter1.flush();
+        fileWriter1.close();
+
+        FileReader fileReader1 = new FileReader(myFile);
+        fileWriter1 = new FileWriter(myFile2);
+        while (fileReader1.ready())
+        fileWriter1.write(fileReader1.read());
+        fileWriter1.flush();
+        fileReader1.close();
+        fileWriter1.close();
+
+        ZipOutputStream zipOutputStream1 = new ZipOutputStream(new FileOutputStream(new File("archive.zip")));
+
+        ZipEntry zen = new ZipEntry(myFile2.getName());
+
+
+        zipOutputStream1.putNextEntry(zen);
+        zipOutputStream1.flush();
+        zipOutputStream1.closeEntry();
+        zipOutputStream1.close();
 
     }
 
