@@ -2,6 +2,7 @@ package arrays;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * In this program is shown how to use reflection for
@@ -18,9 +19,18 @@ public class CopyOfTest {
         b = (String[]) goodCopyOf(b, 10);
         System.out.println(Arrays.toString(b));
 
-        System.out.println("The following call will generate an exception");
+        Scanner in = new Scanner(System.in);
+        int a1,b1;
 
-        b = (String[]) badCopyOf(b, 10);
+        while (in.hasNext()) {
+            a1 = in.nextInt();
+            b1 = in.nextInt();
+            compp(a1, b1);
+        }
+
+//        System.out.println("The following call will generate an exception");
+//
+//        b = (String[]) badCopyOf(b, 10);
     }
 
     /**
@@ -57,5 +67,14 @@ public class CopyOfTest {
         Object newArray = Array.newInstance(componentType, newLength);
         System.arraycopy(a, 0, newArray, 0, Math.min(length, newLength));
         return newArray;
+    }
+
+    public static void compp(int a, int b) {
+
+        if (Integer.compare(a,b) < 0)
+            System.out.println("a < b");
+        else if (Integer.compare(a, b) == 0)
+            System.out.println("a = b");
+        else System.out.println("a > b");
     }
 }
